@@ -19,7 +19,7 @@ class ProductDetailView(DetailView):
 
 class ProductCreateView(CreateView):
     model = Product
-    fields = ("name", "description","price")
+    fields = ("title", "content","preview_image")
     success_url = reverse_lazy("catalog:products_list")
 
 class ProductUpdateView(UpdateView):
