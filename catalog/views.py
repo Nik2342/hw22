@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
+from catalog.forms import ProductForm
 from catalog.models import Product
 
 
@@ -19,12 +20,12 @@ class ProductDetailView(DetailView):
 
 class ProductCreateView(CreateView):
     model = Product
-    fields = ("title", "content","preview_image")
+    form_class = ProductForm
     success_url = reverse_lazy("catalog:products_list")
 
 class ProductUpdateView(UpdateView):
     model = Product
-    fields = ("name", "description","price")
+    form_class = ProductForm
     success_url = reverse_lazy("catalog:products_list")
 
 class ProductDeleteView(DeleteView):
