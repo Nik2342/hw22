@@ -6,28 +6,41 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('catalog', '0001_initial'),
+        ("catalog", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='product',
-            name='created_at',
-            field=models.DateField(blank=True, null=True, verbose_name='Дата создания'),
+            model_name="product",
+            name="created_at",
+            field=models.DateField(blank=True, null=True, verbose_name="Дата создания"),
         ),
         migrations.AlterField(
-            model_name='product',
-            name='image',
-            field=models.ImageField(blank=True, null=True, upload_to='catalog/product_photo', verbose_name='Изображение'),
+            model_name="product",
+            name="image",
+            field=models.ImageField(
+                blank=True,
+                null=True,
+                upload_to="catalog/product_photo",
+                verbose_name="Изображение",
+            ),
         ),
         migrations.AlterField(
-            model_name='product',
-            name='price',
-            field=models.CharField(blank=True, help_text='Введите цену за покупку', max_length=50, null=True, verbose_name='Цена за покупку'),
+            model_name="product",
+            name="price",
+            field=models.CharField(
+                blank=True,
+                help_text="Введите цену за покупку",
+                max_length=50,
+                null=True,
+                verbose_name="Цена за покупку",
+            ),
         ),
         migrations.AlterField(
-            model_name='product',
-            name='updated_at',
-            field=models.DateField(blank=True, null=True, verbose_name='Дата последнего изменения'),
+            model_name="product",
+            name="updated_at",
+            field=models.DateField(
+                blank=True, null=True, verbose_name="Дата последнего изменения"
+            ),
         ),
     ]
