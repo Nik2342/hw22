@@ -20,7 +20,7 @@ class ProductForm(StyleFormMixin, ModelForm):
         model = Product
         exclude = (
             "created_at",
-            "updated_at",
+            "updated_at"
         )
 
     def clean_price(self):
