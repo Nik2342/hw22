@@ -7,24 +7,55 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Blog',
+            name="Blog",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(blank=True, max_length=200, null=True, verbose_name='Заголовок')),
-                ('content', models.TextField(blank=True, null=True, verbose_name='Контент')),
-                ('preview_image', models.ImageField(blank=True, null=True, upload_to='')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')),
-                ('is_published', models.BooleanField(blank=True, default=False, null=True)),
-                ('views_count', models.PositiveIntegerField(default=0, verbose_name='Количество просмотров')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        blank=True, max_length=200, null=True, verbose_name="Заголовок"
+                    ),
+                ),
+                (
+                    "content",
+                    models.TextField(blank=True, null=True, verbose_name="Контент"),
+                ),
+                (
+                    "preview_image",
+                    models.ImageField(blank=True, null=True, upload_to=""),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Дата создания"
+                    ),
+                ),
+                (
+                    "is_published",
+                    models.BooleanField(blank=True, default=False, null=True),
+                ),
+                (
+                    "views_count",
+                    models.PositiveIntegerField(
+                        default=0, verbose_name="Количество просмотров"
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Блог',
-                'verbose_name_plural': 'Блоги',
+                "verbose_name": "Блог",
+                "verbose_name_plural": "Блоги",
             },
         ),
     ]
