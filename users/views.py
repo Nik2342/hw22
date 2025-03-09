@@ -21,8 +21,8 @@ class UserCreateView(CreateView):
 
     def hello_message(self, user_mail):
         send_mail(
-            subject= 'Добро пожаловать в наш каталог',
-            message= "Привет, ты зарегистрировался на сайте",
-            from_email= EMAIL_HOST_USER,
-            recipient_list= [user_mail]
+            subject="Добро пожаловать в наш каталог",
+            message="Привет, ты зарегистрировался на сайте",
+            from_email=EMAIL_HOST_USER,
+            recipient_list=[user_mail],
         )

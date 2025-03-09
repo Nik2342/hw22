@@ -12,7 +12,7 @@ HOST = os.getenv("DBHOST")
 PORT = os.getenv("DBPORT")
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
-from django.conf.global_settings import MEDIA_URL, AUTH_USER_MODEL, LOGIN_REDIRECT_URL
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
