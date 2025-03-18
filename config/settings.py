@@ -1,7 +1,18 @@
 import os.path
 from pathlib import Path
+import os
+from dotenv import load_dotenv
 
-from django.conf.global_settings import MEDIA_URL
+load_dotenv()
+ENGINE = os.getenv("DBENGINE")
+NAME = os.getenv("DBNAME")
+USER = os.getenv("DBUSER")
+PASSWORD = os.getenv("DBPASSWORD")
+HOST = os.getenv("DBHOST")
+PORT = os.getenv("DBPORT")
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,6 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'catalog',
     'blog',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -55,12 +67,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': "App",
-        'USER':'postgres',
-        'PASSWORD': '12345',
-        'HOST': 'localhost',
-        'PORT': '5432'
+        'ENGINE': ENGINE,
+        'NAME': NAME,
+        'USER':USER,
+        'PASSWORD': PASSWORD,
+        'HOST': HOST,
+        'PORT': PORT
     }
 }
 
@@ -100,3 +112,20 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = 'media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+AUTH_USER_MODEL = 'users.User'
+
+LOGIN_REDIRECT_URL = 'catalog:products_list'
+LOGIN_REDIRECT_URL = 'catalog:products_list'
+LOGIN_URL = "users:login"
+
+
+EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_PORT = 2525
+#EMAIL_HOST_USER = EMAIL_HOST_USER
+#EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+
+SERVER_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
