@@ -5,6 +5,7 @@
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         {% for product in object_list%}
+        {% if perms.catalog.can_unpublish_product or product.is_published == True %}
         <div class="col">
           <div class="card shadow-sm">
             <img src ="{{product.image | media_filter }}">
@@ -19,6 +20,7 @@
             </div>
           </div>
         </div>
+        {% endif %}
         {% endfor %}
       </div>
     </div>

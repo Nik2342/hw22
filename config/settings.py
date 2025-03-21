@@ -16,9 +16,9 @@ EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-!3_7-pq!=qhgc68v--pa0)ywl*ffw@191im24pf@^p7u+=(kzq'
+SECRET_KEY = os.getenv("SECRET_KEY")
 
-DEBUG = True
+DEBUG = os.getenv("DEBUG")
 
 ALLOWED_HOSTS = ["*"]
 
@@ -67,7 +67,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': ENGINE,
+        'ENGINE': "django.db.backends.postgresql_psycopg2",
         'NAME': NAME,
         'USER':USER,
         'PASSWORD': PASSWORD,
