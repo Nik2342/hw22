@@ -1,5 +1,3 @@
-from itertools import product
-
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponseForbidden
@@ -16,6 +14,10 @@ from django.views.generic import (
 
 from catalog.forms import ProductForm, ProductModerationForm
 from catalog.models import Product
+from catalog.services import (
+    get_products_from_cache,
+    get_products_by_category_from_cache,
+)
 
 
 def home(request):
@@ -28,6 +30,9 @@ def contacts(request):
 
 class ProductListView(ListView):
     model = Product
+
+    def get_queryset(self):
+        return get_products_from_cache()
 
 
 class ProductDetailView(LoginRequiredMixin, DetailView):
@@ -77,3 +82,10 @@ class UnpublishProductView(LoginRequiredMixin, View):
         product.save()
 
         return redirect("catalog:products", pk=product.id)
+
+
+class ProductByCategoryView(ListView):
+    model = Product
+
+    def get_queryset(self):
+        return get_products_by_category_from_cache()
