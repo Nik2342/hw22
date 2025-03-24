@@ -13,7 +13,7 @@ from django.views.generic import (
 )
 
 from catalog.forms import ProductForm, ProductModerationForm
-from catalog.models import Product
+from catalog.models import Product, Category
 from catalog.services import (
     get_products_from_cache,
     get_products_by_category_from_cache,
@@ -88,4 +88,6 @@ class ProductByCategoryView(ListView):
     model = Product
 
     def get_queryset(self):
-        return get_products_by_category_from_cache()
+        category_id = self.kwargs.get("category_id")
+        self.category = get_object_or_404(Category, pk=category_id)
+        return get_products_by_category_from_cache(category_id)
